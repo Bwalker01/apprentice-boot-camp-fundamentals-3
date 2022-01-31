@@ -1,7 +1,5 @@
 package tax;
 
-import static tax.FuelType.*;
-
 public class DefaultTaxCalculator extends TaxCalculator {
     public DefaultTaxCalculator() {
         super();
