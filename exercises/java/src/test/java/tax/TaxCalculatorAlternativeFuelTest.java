@@ -1,8 +1,11 @@
 package tax;
 
+import org.assertj.core.internal.bytebuddy.asm.Advice.AllArguments;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import toggles.AllToggles;
 
 import java.time.LocalDate;
 
@@ -18,7 +21,8 @@ public class TaxCalculatorAlternativeFuelTest {
 
     @Before
     public void setUp() {
-        taxCalculator = new DefaultTaxCalculator();
+        AllToggles allToggles = new AllToggles();
+        taxCalculator = new DefaultTaxCalculator(allToggles);
     }
 
     @Test

@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import toggles.AllToggles;
+
 import java.time.LocalDate;
 
 import static java.time.Month.JANUARY;
@@ -17,7 +19,8 @@ public class TaxCalculatorPetrolTest {
 
     @Before
     public void setUp() {
-        taxCalculator = new DefaultTaxCalculator(2019);
+        AllToggles allToggles = new AllToggles();
+        taxCalculator = new DefaultTaxCalculator(2019, allToggles);
     }
 
     @Test
