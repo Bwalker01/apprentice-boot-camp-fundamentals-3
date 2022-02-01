@@ -1,17 +1,36 @@
 package tax;
 
+import toggles.AllToggles;
+
 public class DefaultTaxCalculator extends TaxCalculator {
-    public DefaultTaxCalculator() {
+    private final AllToggles allToggles;
+
+    public DefaultTaxCalculator(AllToggles allToggles) {
         super();
+        this.allToggles = allToggles;
     }
 
-    public DefaultTaxCalculator(int year) {
+    public DefaultTaxCalculator(int year, AllToggles allToggles) {
         super(year);
+        this.allToggles = allToggles;
     }
 
     @Override
     int calculateTax(Vehicle vehicle) {
         int o2Emis = vehicle.getCo2Emissions();
+
+        if (vehicle.getDateOfFirstRegistration().getYear() < 2018 && allToggles.isEnabled("afterFirstYearExpensive")) {
+            switch (vehicle.getFuelType()) {
+                case PETROL:
+                case DIESEL:
+                    return 450;
+                case ALTERNATIVE_FUEL:
+                    return 440;
+                default:
+                    return 310;
+
+            }
+        }
 
         switch (vehicle.getFuelType()) {
             case PETROL:
