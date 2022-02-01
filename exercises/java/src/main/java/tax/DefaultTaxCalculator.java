@@ -25,6 +25,7 @@ public class DefaultTaxCalculator extends TaxCalculator {
         }
     }
 
+    //test comment to create a conflict
     private int altTax(int o2Emis) {
         if (o2Emis <= 50) {
             return 0;
