@@ -13,8 +13,6 @@ public class DefaultTaxCalculator extends TaxCalculator {
     int calculateTax(Vehicle vehicle) {
         int o2Emis = vehicle.getCo2Emissions();
 
-        // Merge Conflict Comment
-
         switch (vehicle.getFuelType()) {
             case PETROL:
                 return petrolTax(o2Emis);
@@ -27,6 +25,7 @@ public class DefaultTaxCalculator extends TaxCalculator {
         }
     }
 
+    // Testing for a merge conflict
     private int altTax(int o2Emis) {
         if (o2Emis <= 50) {
             return 0;
